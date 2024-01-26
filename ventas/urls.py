@@ -8,8 +8,12 @@ urlpatterns = [
     path('calculadora/', Calculadora.as_view(), name= 'calculadora'),
     path('Clientes/', ClientesView.as_view(), name= 'clientes'),
     path('Addcliente/', views.add_cliente_view, name='addcliente'),
-    path('Editcliente/', views.edit_cliente_view, name='editcliente'),
-    path('Deletecliente/', views.delete_cliente_view, name='deletecliente'),
+    path('Deletecliente/<int:clientes_id>', views.delete_cliente_view, name='deletecliente'),
     #Datable
     path('list_clientes/', views.list_clientes, name='list_clientes'),
+    #productos
+    path('Productos/', ProductosView.as_view(), name= 'productos'),
+    path('Addproducto/', views.add_producto_view, name='addproducto'),
+    #Datable
+    path('list_productos/', views.list_productos, name='list_productos'),
 ]

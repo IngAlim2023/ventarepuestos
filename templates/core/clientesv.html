@@ -7,61 +7,116 @@
 {% endblock %}
 
 {% block contenido %}
+<!-- Agregar Cliente -->
 <div class="container mt-3">
-    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Agregar cliente
-        <i class="fa-solid fa-plus"></i>
-    </button>
+    <!-- CRUD -->
+    <div class="d-flex">
+        <!-- Agregar -->
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Agregar cliente
+            <i class="fa-solid fa-plus"></i>
+        </button>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar cliente</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar cliente</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="{% url 'addcliente' %}">
+                            {% csrf_token %}
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon3">{{ form.nombre.label }}</span>
+                                {{ form.nombre }}
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon3">{{ form.apellido.label }}</span>
+                                {{ form.apellido }}
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon3">{{ form.tipo_id.label }}</span>
+                                {{ form.tipo_id }}
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon3">{{ form.identification.label }}</span>
+                                {{ form.identification }}
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon3">{{ form.address.label }}</span>
+                                {{ form.address }}
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon3">{{ form.phone.label }}</span>
+                                {{ form.phone }}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-success">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                    
                 </div>
-                <div class="modal-body">
-                    <form method="POST" action="{% url 'addcliente' %}">
-                        {% csrf_token %}
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon3">{{ form.nombre.label }}</span>
-                            {{ form.nombre }}
+            </div>
+        </div>
+
+        <!-- Eliminar -->
+
+        <button type="button" class="btn btn-danger mx-3" data-bs-toggle="modal" data-bs-target="#exampleModalDelete">
+            Eliminar cliente
+            <i class="fa-solid fa-trash"></i>
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar cliente</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col">
+                                <table class="table table-hover">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">Id</th>
+                                            <th scope="col">nombre</th>
+                                            <th scope="col">cedula</th>
+                                            <th scope="col">Eliminar</th>
+                                            </tr>
+                                    </thead>
+                                    {% for dato in clientes %}
+                                        <tbody>
+                                            <tr>
+                                            <th scope="row">{{ dato.id }}</th>
+                                            <td>{{ dato.nombre }}</td>
+                                            <td>{{ dato.identification }}</td>
+                                            <td>
+                                                <a class="btn btn-dark" href="{% url 'deletecliente' dato.id %}" role="button">Seguro? <ion-icon name="trash-outline"></ion-icon></a>
+                                            </td>
+                                            </tr>
+                                        </tbody>
+                                    {% endfor %}
+                                </table>
+                            </div>
                         </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon3">{{ form.apellido.label }}</span>
-                            {{ form.apellido }}
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon3">{{ form.tipo_id.label }}</span>
-                            {{ form.tipo_id }}
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon3">{{ form.identification.label }}</span>
-                            {{ form.identification }}
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon3">{{ form.address.label }}</span>
-                            {{ form.address }}
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon3">{{ form.phone.label }}</span>
-                            {{ form.phone }}
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="submit" class="btn btn-success">Guardar</button>
-                        </div>
-                    </form>
+                    </div>
+                    
                 </div>
-                
             </div>
         </div>
     </div>
     
     <!-- Incio Tabla-->
     <div class="container mt-4">
-        <h2>Tabla de cliente</h2>
+        <h2>
+            Tabla de clientes <i class="fa-solid fa-users"></i> 
+        </h2>
     </div>
     
     <div class="container mt-4">

@@ -1,5 +1,5 @@
 from django import forms
-from ventas.models import Clientes
+from ventas.models import Clientes, Producto
 
 class AddClienteForm(forms.ModelForm):
     class Meta:
@@ -28,4 +28,31 @@ class AddClienteForm(forms.ModelForm):
             'address':  forms.TextInput(attrs={'class': 'form-control'}),
             'phone':  forms.TextInput(attrs={'class': 'form-control'}),
             
+        }
+
+# Productos
+        
+class AddProductoForm(forms.ModelForm):
+    class Meta:
+        model = Producto
+        fields = [
+                'descripcion', 
+                'imagen',
+                'costo',
+                'ubicacion',
+                'cantidad',
+            ]
+        labels = {
+            'descripcion':'Descripción', 
+            'imagen':'Imagen',
+            'costo':'Costo',
+            'ubicacion':'Ubicación',
+            'cantidad':'Cantidad',
+        }
+        widgets = {
+            'descripcion':  forms.TextInput(attrs={'class': 'form-control'}),
+            'imagen':  forms.ClearableFileInput(attrs={'class': 'form-control'}),
+            'costo':  forms.NumberInput(attrs={'class': 'form-select'}),
+            'ubicacion':  forms.NumberInput(attrs={'class': 'form-control'}),
+            'cantidad':  forms.NumberInput(attrs={'class': 'form-control'}),            
         }

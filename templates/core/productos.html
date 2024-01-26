@@ -1,0 +1,105 @@
+{% extends 'core/base.html' %}
+{% block titulo %} productos {% endblock %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block estilo %}
+{% endblock %}
+
+{% block contenido %}
+<!-- Agregar Cliente -->
+<div class="container mt-3">
+    <!-- CRUD -->
+    <div class="d-flex">
+        <!-- Agregar -->
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Agregar producto
+            <i class="fa-solid fa-plus"></i>
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar producto</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="{% url 'addproducto' %}" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon3">{{ form.descripcion.label }}</span>
+                                {{ form.descripcion }}
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon3">{{ form.imagen.label }}</span>
+                                {{ form.imagen }}
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon3">{{ form.costo.label }}</span>
+                                {{ form.costo }}
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon3">{{ form.ubicacion.label }}</span>
+                                {{ form.ubicacion }}
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon3">{{ form.cantidad.label }}</span>
+                                {{ form.cantidad }}
+                            </div>
+                            
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-success">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+    
+    <!-- Incio Tabla-->
+    <div class="container mt-4">
+        <h2>
+            Tabla de productos <i class="fa-solid fa-boxes-stacked"></i>
+        </h2>
+    </div>
+    
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mx-auto">
+                <div class="table-responsive">
+                    <table id="datos" class="table">
+                        <caption> productos </caption>
+                        <thead>
+                            <tr>
+                                <th class="centered">Id</th>
+                                <th class="centered"> Descripcion </th>
+                                <th class="centered"> Imagen </th>
+                                <th class="centered"> Costo </th>
+                                <th class="centered"> Ubicación </th>
+                                <th class="centered"> Cantidad </th>
+                                <th class="centered"> Creado </th>
+                                <th class="centered"> Actualizado </th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody_productos">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+       
+    </div>
+    <!--Fin Tabla-->
+
+    <!--Script para datatable de productos-->
+    <script src="{% static 'js/producto.js' %}"></script>
+{% endblock %}
