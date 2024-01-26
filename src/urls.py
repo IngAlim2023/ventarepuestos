@@ -25,5 +25,5 @@ urlpatterns = [
     path('', include('ventas.urls')),
     #implmentar el Login
     #path('accounts/', include('django.contrib.auth.urls')),
-    #path('registration/', include('registration.urls')),
+    path('registration/', include('registration.urls')),
 ]  + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

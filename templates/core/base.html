@@ -13,7 +13,10 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css"/>
     <!--Custom css-->
     <link rel="stylesheet" href="{% static 'css/stylebase.css' %}">
-</head>
+    <!-- Font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -25,7 +28,7 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Ventas</a>
+                    <a class="nav-link active" aria-current="page" href="{% url 'ventas' %}">Ventas</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">Inventario</a>
@@ -33,8 +36,16 @@
                   <li class="nav-item">
                     <a class="nav-link" href="#">Compras</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Pedidos</a>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Pedidos
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Todos</a></li>
+                      <li><a class="dropdown-item" href="#">Para hoy</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Atrasados</a></li>
+                    </ul>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="{% url 'calculadora' %}">Precios de venta</a>
@@ -44,7 +55,7 @@
                       Empresa
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Clientes</a></li>
+                      <li><a class="dropdown-item" href="{% url 'clientes' %}">Clientes</a></li>
                       <li><a class="dropdown-item" href="#">Dashboard</a></li>
                       <li><hr class="dropdown-divider"></li>
                       <li><a class="dropdown-item" href="#">Información</a></li>

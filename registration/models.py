@@ -6,9 +6,9 @@ from ckeditor.fields import RichTextField
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 
-# # funcion para la carga de imagenes de usuario:
 def upload_image(instance, filename):
     return "img/users/{id}/{filename}".format( id = instance.pk, filename = filename)
+
 
 class TipoDocumento(models.Model):
     tipo_documento = models.CharField('Tipo de documento', max_length=30)
