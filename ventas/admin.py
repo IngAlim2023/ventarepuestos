@@ -1,5 +1,5 @@
 from django.contrib import admin
-from ventas.models import Producto, Clientes, TipoDocumentoCliente
+from ventas.models import Producto, Clientes, TipoDocumentoCliente, Egreso, ProductosEgreso
 
 # Register your models here.
 
@@ -22,3 +22,5 @@ class ClientesAdmin(admin.ModelAdmin):
 admin.site.register(Producto, ProductoAdmin)
 admin.site.register(TipoDocumentoCliente)
 admin.site.register(Clientes, ClientesAdmin)
+admin.site.register(Egreso)
+admin.site.register(ProductosEgreso)

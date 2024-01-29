@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 
 #Vistas basadas en clases:
 from django.views.generic.base import TemplateView
-from .models import Clientes, Producto
+from .models import Clientes, Producto, Egreso, ProductosEgreso
 # Formulario de clientes y producto
 from .forms import AddClienteForm, AddProductoForm
 #messages
@@ -10,6 +10,8 @@ from django.contrib import messages
 
 #Table Datatable
 from django.http.response import JsonResponse
+
+
 
 # Create your views here.
 
