@@ -12,7 +12,7 @@ from django.contrib import messages
 from django.http.response import JsonResponse, HttpResponse
 
 #Video 6
-
+from django.views.generic.list import ListView
 
 
 # Create your views here.
@@ -97,3 +97,12 @@ def list_productos(request):
     return JsonResponse(data)
 
 # Video 6
+class Add_venta(ListView):
+    template_name = 'core/add_ventas.html'
+    model = Egreso
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["productos_lista"] = Producto.objects.all()
+        context["clientes_lista"] = Clientes.objects.all()
+        return context

@@ -17,7 +17,7 @@ urlpatterns = [
     #Datable
     path('list_productos/', views.list_productos, name='list_productos'),
     #Añadir ventas
-    #path('Add_ventas/', views.add_ventas, name = 'addventa'),
+    path('Add_ventas/', Add_venta.as_view(), name = 'addventa'),
     #path('Export/', views.export_pdf, name = 'exportpdf'),
    # path('Export/<id>/<iva>', views.export_pdf, name = 'exportpdf'),    
     
