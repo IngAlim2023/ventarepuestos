@@ -34,7 +34,7 @@ const listproductos= async() => {
                 <tr>
                     <td>${productos.id}</td>
                     <td>${productos.descripcion}</td>
-                    <td class="field-imagen"><img src="http://127.0.0.1:8000/media/${productos.imagen}" alt="Imagen del producto" style="max-width: 100px;"></td>
+                    <td class="field-imagen"><img src="http://127.0.0.1:8000/media/${productos.imagen}" alt="Imagen del producto" style="max-width: 100px; max-height: 100px;"></td>
                     <td>${productos.costo}</td>
                     <td>${productos.ubicacion}</td>
                     <td>${productos.cantidad}</td>

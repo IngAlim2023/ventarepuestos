@@ -9,7 +9,9 @@ from .forms import AddClienteForm, AddProductoForm
 from django.contrib import messages
 
 #Table Datatable
-from django.http.response import JsonResponse
+from django.http.response import JsonResponse, HttpResponse
+
+#Video 6
 
 
 
@@ -93,3 +95,5 @@ def list_productos(request):
     productos = list(Producto.objects.values())
     data = {'productos': productos}
     return JsonResponse(data)
+
+# Video 6

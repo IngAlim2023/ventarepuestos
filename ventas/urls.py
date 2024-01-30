@@ -19,6 +19,6 @@ urlpatterns = [
     #Añadir ventas
     #path('Add_ventas/', views.add_ventas, name = 'addventa'),
     #path('Export/', views.export_pdf, name = 'exportpdf'),
-    #path('Export/<id>/<iva>', views.export_pdf, name = 'exportpdf'),    
+   # path('Export/<id>/<iva>', views.export_pdf, name = 'exportpdf'),    
     
 ]
